@@ -19,3 +19,17 @@ $json_array = array(
 
 header("Content-Type: application/json charset=UTF-8");
 echo json_encode($json_array);
+
+setCount();
+
+
+
+function setCount()
+{
+    $fp = fopen("count.txt", "r+");
+    $count = fgets($fp, 10);
+    $count++;
+    rewind($fp);
+    fputs($fp, $count);
+    fclose($fp);
+}
