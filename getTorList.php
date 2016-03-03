@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * OK : PHP5.4.16
+ * NG : PHP7
+ *
+ * Why?
+ */
 $url = "https://www.dan.me.uk/torlist/";
 
 $headers = array(
@@ -22,6 +27,8 @@ $html = curl_exec($ch);
 $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
 curl_close($ch);
+
+print_r($html);
 
 if ($code === "403") { die(); }
 
