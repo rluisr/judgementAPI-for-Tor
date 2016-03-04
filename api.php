@@ -17,27 +17,10 @@ if (strpos($memcache->get('key'), $tor_ip) !== false || strpos($tor_hostname, "t
 }
 
 $json_array = array(
-    'ip' => $tor_ip,
-    'server_ip' => $_SERVER['REMOTE_ADDR'],
-    'hostname' => $tor_hostname,
     'result' => $tor_result
 );
 
 header("Content-Type: application/json charset=UTF-8");
 echo json_encode($json_array);
-
-setCount();
-
-
-
-function setCount()
-{
-    $fp = fopen("count.txt", "r+");
-    $count = fgets($fp, 10);
-    $count++;
-    rewind($fp);
-    fputs($fp, $count);
-    fclose($fp);
-}
 
 ?>
